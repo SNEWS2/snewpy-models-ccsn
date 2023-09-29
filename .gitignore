@@ -1,0 +1,19 @@
+# compiled code and build products
+__pycache__/
+*.pyc
+*.so
+build/
+dist/
+*.egg-info/
+
+# snewpy.snowglobes output files
+*_SNOprocessed.tar.gz
+*.npy
+*.npz
+
+# editor-specific
+.ipynb_checkpoints/
+.vscode/
+
+#hypothesis package cache
+.hypothesis/
