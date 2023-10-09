@@ -27,9 +27,9 @@ class Spectrum:
         self.dE = np.diff(np.logspace(0, np.log10(Emax), nbin)) * u.MeV
     
     def __str__(self):
-        s = f'{t:12g} s\n'
+        s = f'{self.t.to_value("s"):12g} s\n'
         for _E, _dE, _F in zip(self.E, self.dE, self.F):
-            s += f'{_E.to("MeV"):12.6f}{_dE.to("MeV"):14.6f}{_F.to("erg/MeV/s"):14g}\n'
+            s += f'{_E.to("MeV"):12.6f}{_dE.to("MeV"):14.6f}{_F.to("erg/(MeV s)"):14g}\n'
         return s
 
 def read_spec(filename):
