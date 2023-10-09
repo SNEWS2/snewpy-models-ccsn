@@ -1,6 +1,7 @@
 # coding: utf-8
 import numpy as np
 import argparse
+from astropy import units as u
 
 class Spectrum:
     """Storage for spectrum data from the Fornax 2022 models."""
@@ -17,18 +18,18 @@ class Spectrum:
         F : list
             Array of flux values.
         """
-        self.t = t
-        self.E = E
-        self.F = F
+        self.t = t * u.s
+        self.E = E * u.MeV
+        self.F = np.asarray(F) * 1e75 * u.erg/u.MeV/u.s
 
         Emax = 100 * np.ceil(np.max(E)/100)
         nbin = len(E) + 1
-        self.dE = np.diff(np.logspace(0, np.log10(Emax), nbin))
+        self.dE = np.diff(np.logspace(0, np.log10(Emax), nbin)) * u.MeV
     
     def __str__(self):
         s = f'{t:12g} s\n'
         for _E, _dE, _F in zip(self.E, self.dE, self.F):
-            s += f'{_E:12.6f}{_dE:12.6f}{_F:12g}\n'
+            s += f'{_E.to("MeV"):12.6f}{_dE.to("MeV"):14.6f}{_F.to("erg/MeV/s"):14g}\n'
         return s
 
 def read_spec(filename):
