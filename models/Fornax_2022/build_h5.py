@@ -9,7 +9,7 @@ p = ArgumentParser(description='Generate HDF5 outputs from Fornax data')
 p.add_argument('progenitor', help='progenitor folder name')
 args = p.parse_args()
 
-outf = h5py.File(f'lum_spec_{args.progenitor}M_dat.h5', 'w')
+outf = h5py.File(f'lum_spec_{args.progenitor}_dat.h5', 'w')
 
 # Loop over flavor.
 for flavor in tqdm('012'):
