@@ -1,4 +1,4 @@
-# Kori_2023 Axionlike CCSN 2D Models
+# Mori_2023 Axionlike CCSN 2D Models
 
 Neutrino data for 2D models with axion-like particles.
 
