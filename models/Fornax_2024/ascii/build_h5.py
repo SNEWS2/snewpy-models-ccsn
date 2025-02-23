@@ -1,6 +1,7 @@
 import os
 import re
 import h5py
+import warnings
 import numpy as np
 from read_spec import read_spec, Spectrum
 from argparse import ArgumentParser
@@ -45,6 +46,11 @@ with h5py.File(f'lum_spec_{args.progenitor}_dat.h5', 'w') as outf:
         degroup = []
 
         for (t, E, F) in read_spec(nufile):
+            #- Hack to avoid a 64k size limit on HDF5 attrs (time array).
+            if len(times) >= 8180:
+                warnings.warn('Trimming data to avoid HDF5 64k limit on attrs!')
+                break
+
             spec = Spectrum(t, E, F)
             times.append(spec.t.to_value('s'))
             egroup.append(list(spec.E.to_value('MeV')))
@@ -52,8 +58,6 @@ with h5py.File(f'lum_spec_{args.progenitor}_dat.h5', 'w') as outf:
 
             for j, fl in enumerate(spec.F):
                 g[j].append(fl.to_value('1e50 erg/(MeV s)'))
-
-        print(len(times))
 
         # Write attributes and datasets to each flavor group.
         grp.attrs['time'] = times
