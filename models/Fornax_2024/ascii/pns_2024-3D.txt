@@ -1,3 +1,4 @@
+# Table of final PNS masses, from Adam Burrows et al., ApJL 964:L16, 2024
 #model #final PNS baryon mass (solar masses)
     9a   1.237
     9b   1.238

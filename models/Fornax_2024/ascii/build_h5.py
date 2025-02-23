@@ -1,4 +1,5 @@
 import os
+import re
 import h5py
 import numpy as np
 from read_spec import read_spec, Spectrum
@@ -11,16 +12,24 @@ args = p.parse_args()
 
 # Read in list of PNS baryon masses.
 pns_mass = {}
-with open('pns_2022-2D.txt') as f_pns:
+with open('pns_2024-3D.txt') as f_pns:
     for line in f_pns:
         if line.startswith('#'):
             continue
-        tokens = line.strip().split()
-        pns_mass[tokens[0]] = float(tokens[1])
+        model, mass = line.strip().split()
+
+        # Check for unknown mass
+        if re.sub('[0-9.]', '', mass) == '':
+            mass = float(mass)
+        else:
+            mass = -1.
+
+        pns_mass[model] = float(mass)
 
 with h5py.File(f'lum_spec_{args.progenitor}_dat.h5', 'w') as outf:
-    mass = args.progenitor[:-3] if 'bh' in args.progenitor else args.progenitor
-    outf.attrs['Mpns'] = pns_mass[mass]
+    model = args.progenitor
+    Mpns = pns_mass[model] if model in pns_mass else -1.
+    outf.attrs['Mpns'] = Mpns
 
     # Loop over flavor.
     for flavor in tqdm('012'):
