@@ -53,6 +53,8 @@ with h5py.File(f'lum_spec_{args.progenitor}_dat.h5', 'w') as outf:
             for j, fl in enumerate(spec.F):
                 g[j].append(fl.to_value('1e50 erg/(MeV s)'))
 
+        print(len(times))
+
         # Write attributes and datasets to each flavor group.
         grp.attrs['time'] = times
         grp.create_dataset('egroup', data=egroup)
