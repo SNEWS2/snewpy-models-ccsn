@@ -43,3 +43,5 @@ The models are reproduced here with permission from the authors, and include the
 ## Available Data
 
 Note that the Fornax models include angle-averaged neutrino emission (with both luminosity and tabulated spectra) and angle-dependent emission. Here we only include the angle-averaged neutrino data.
+
+The data have been packed into HDF5 format to conserve space. See scripts in the `ascii` subfolder for details.
