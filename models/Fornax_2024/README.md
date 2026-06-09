@@ -8,6 +8,8 @@ CCSN neutrino estimates from 25 late-time 3D simulations using the Fornax code. 
 * *Physical Correlations and Predictions Emerging from Modern Core-collapse Supernova Theory* by Adam Burrows, Tianshu Wang, and David Vartanyan, [Astrophys.  J. Lett. 964:16, 2024](https://doi.org/10.3847/2041-8213/ad319e).
 * *Gravitational-wave and Gravitational-wave Memory Signatures of Core-collapse Supernovae* by Lyla Choi, Adam Burrows, and David Vartanyan, [Astrophys. J.  975:12, 2024](https://doi.org/10.3847/1538-4357/ad74f8).
 
+Due to the sizes of the angle-dependent emission models, only the angle-averaged spectra are available here. Access to the multi-GB angle-dependent HDF5 outputs is available via the [Princeton group website](https://www.astro.princeton.edu/~burrows/nu-emissions.3d.update/).
+
 ## Models
 
 The models are reproduced here with permission from the authors, and include the following parameters (see Table 3 of [Adam Burrows et al 2024 ApJL 964 L16](https://doi.org/10.3847/2041-8213/ad319e)):
