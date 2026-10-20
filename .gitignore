@@ -1,0 +1,6 @@
+# compiled code and build products
+.DS_Store
+
+# editor-specific
+.ipynb_checkpoints/
+
